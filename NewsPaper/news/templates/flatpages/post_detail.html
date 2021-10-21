@@ -1,0 +1,37 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+Posts
+{% endblock title %}
+ 
+<!-- Перед таблицей добавим форму для поиска -->
+{% block content %}
+    <hr>
+        <table>
+            <tr>
+                <td>
+                    Заголовок
+                </td>
+                <td>
+                    Дата публикации
+                </td>
+                <td>
+                    Текст
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ post.headline|Censor }}
+                </td>
+                <td>
+                    {{ post.datetime|date:'d-M-Y'}} 
+                </td>
+                <td>
+                    {{ post.main_part|Censor|truncatechars:50}}
+                </td>
+            </tr>
+        </table>
+
+    {% endblock content %}
